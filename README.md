@@ -151,14 +151,6 @@ class LightSwitch{
             state = State.Enabled
     }
 }
-
-fun main(){
-    val switch = LightSwitch()
-    switch.turn()
-    require(switch.isOn)
-    switch.turn()
-    require(!switch.isOn)
-}
 ```
 
 ### Strategy
