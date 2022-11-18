@@ -1,0 +1,3 @@
+package creational
+
+object Singleton
