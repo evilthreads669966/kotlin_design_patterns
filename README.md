@@ -106,7 +106,7 @@ class Family: Iterable<String>{
 }
 ```
 
-### Builder
+### Memento
 ```kotlin
 class Memento<T>(val state: T)
 
