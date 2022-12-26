@@ -1,43 +1,43 @@
-abstract class PipelineStep<T>{
-    private var next: PipelineStep<T>? = null
+abstract class PipelineStep{
+    private var next: PipelineStep? = null
 
-    fun nextStep(step: PipelineStep<T>){
+    fun nextStep(step: PipelineStep){
         next = step
     }
 
-    fun receiveRequest(request: T){
+    fun receiveRequest(request: String){
         handleRequest(request)
         next?.receiveRequest(request)
     }
 
-    abstract fun handleRequest(request: T)
+    abstract fun handleRequest(request: String)
 }
 
-class StepA<T>: PipelineStep<T>() {
-    override fun handleRequest(request: T) {
+class StepA: PipelineStep() {
+    override fun handleRequest(request: String) {
         println("Step A")
         println(request)
     }
 }
 
-class StepB<T>: PipelineStep<T>() {
-    override fun handleRequest(request: T) {
+class StepB: PipelineStep() {
+    override fun handleRequest(request: String) {
         println("Step B")
         println(request)
     }
 }
 
-class StepC<T>: PipelineStep<T>() {
-    override fun handleRequest(request: T) {
+class StepC: PipelineStep() {
+    override fun handleRequest(request: String) {
         println("Step C")
         println(request)
     }
 }
 
 fun main(){
-    val stepA = StepA<String>()
-    val stepB = StepB<String>()
-    val stepC = StepC<String>()
+    val stepA = StepA()
+    val stepB = StepB()
+    val stepC = StepC()
 
     stepA.nextStep(stepB)
     stepB.nextStep(stepC)
